@@ -1,0 +1,370 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Shape documentation. Strict JSON parsing, duplicate checks, declared types, address resolution, and preconditions additionally require acac.contracts. Authorization and label correctness are NOT shape constraints.",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "acac-1.0"
+        },
+        "task": {
+          "const": "correct_ledger"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "field_types": {
+              "type": "object",
+              "properties": {
+                "M": {
+                  "type": "object",
+                  "minProperties": 1,
+                  "propertyNames": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "additionalProperties": {
+                    "enum": [
+                      "string",
+                      "integer",
+                      "boolean"
+                    ]
+                  }
+                },
+                "H": {
+                  "type": "object",
+                  "minProperties": 1,
+                  "propertyNames": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "additionalProperties": {
+                    "enum": [
+                      "string",
+                      "integer",
+                      "boolean"
+                    ]
+                  }
+                },
+                "W": {
+                  "type": "object",
+                  "minProperties": 1,
+                  "propertyNames": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "additionalProperties": {
+                    "enum": [
+                      "string",
+                      "integer",
+                      "boolean"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "M",
+                "H",
+                "W"
+              ],
+              "additionalProperties": false
+            },
+            "ledger": {
+              "type": "object",
+              "properties": {
+                "M": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "record_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "values": {
+                        "type": "object",
+                        "minProperties": 1,
+                        "additionalProperties": {
+                          "type": [
+                            "string",
+                            "integer",
+                            "boolean"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "record_id",
+                      "values"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1
+                },
+                "H": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "record_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "values": {
+                        "type": "object",
+                        "minProperties": 1,
+                        "additionalProperties": {
+                          "type": [
+                            "string",
+                            "integer",
+                            "boolean"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "record_id",
+                      "values"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1
+                },
+                "W": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "record_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "values": {
+                        "type": "object",
+                        "minProperties": 1,
+                        "additionalProperties": {
+                          "type": [
+                            "string",
+                            "integer",
+                            "boolean"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "record_id",
+                      "values"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "M",
+                "H",
+                "W"
+              ],
+              "additionalProperties": false
+            },
+            "original_guideline": {
+              "type": "string",
+              "minLength": 1
+            },
+            "updates": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "notice": {
+              "type": "string",
+              "minLength": 1
+            },
+            "supplied_edits": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "const": "replace"
+                      },
+                      "table": {
+                        "enum": [
+                          "M",
+                          "H",
+                          "W"
+                        ]
+                      },
+                      "record_id": {
+                        "type": "string"
+                      },
+                      "field": {
+                        "type": "string"
+                      },
+                      "old_value": {
+                        "type": [
+                          "string",
+                          "integer",
+                          "boolean"
+                        ]
+                      },
+                      "new_value": {
+                        "type": [
+                          "string",
+                          "integer",
+                          "boolean"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "op",
+                      "table",
+                      "record_id",
+                      "field",
+                      "old_value",
+                      "new_value"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              ]
+            }
+          },
+          "required": [
+            "field_types",
+            "ledger",
+            "original_guideline",
+            "updates",
+            "notice",
+            "supplied_edits"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "schema_version",
+        "task",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "acac-1.0"
+        },
+        "task": {
+          "const": "label_records"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "records": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "record_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "text": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "record_id",
+                  "text"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 1
+            },
+            "field_types": {
+              "type": "object",
+              "minProperties": 1,
+              "propertyNames": {
+                "type": "string",
+                "minLength": 1
+              },
+              "additionalProperties": {
+                "enum": [
+                  "string",
+                  "integer",
+                  "boolean"
+                ]
+              }
+            },
+            "queries": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "record_id": {
+                    "type": "string"
+                  },
+                  "field": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "record_id",
+                  "field"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 1
+            },
+            "guideline": {
+              "type": "string",
+              "minLength": 1
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "record_id": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "record_id",
+                  "text"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "records",
+            "field_types",
+            "queries",
+            "guideline",
+            "evidence"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "schema_version",
+        "task",
+        "payload"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

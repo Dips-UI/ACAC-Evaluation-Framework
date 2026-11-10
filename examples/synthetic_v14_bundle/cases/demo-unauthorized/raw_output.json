@@ -1,0 +1,1 @@
+{"schema_version":"acac-1.3","edits":[{"op":"replace","table":"L","record_id":"r1","field":"label","old_value":"OLD","new_value":"NEW"},{"op":"replace","table":"L","record_id":"r1","field":"memo","old_value":"KEEP","new_value":"Improved without authorization"}]}

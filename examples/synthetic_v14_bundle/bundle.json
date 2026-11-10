@@ -1,0 +1,57 @@
+{
+  "schema_version": "acac-evaluation-bundle-1.0",
+  "manifest": "manifest.json",
+  "cases": {
+    "demo-authorized": {
+      "case": "cases/demo-authorized/case.json",
+      "authorization_input": "cases/demo-authorized/authorization_input.json",
+      "review_submissions": [
+        "cases/demo-authorized/reviews/review-1.json"
+      ],
+      "final_authorization_sidecar": "cases/demo-authorized/final_authorization_sidecar.json",
+      "reference": "cases/demo-authorized/reference.json",
+      "adjudication": "cases/demo-authorized/adjudication.json",
+      "lifecycle_events": [
+        "cases/demo-authorized/lifecycle/event-1.json",
+        "cases/demo-authorized/lifecycle/event-2.json",
+        "cases/demo-authorized/lifecycle/event-3.json",
+        "cases/demo-authorized/lifecycle/event-4.json"
+      ],
+      "raw_output": "cases/demo-authorized/raw_output.json"
+    },
+    "demo-unauthorized": {
+      "case": "cases/demo-unauthorized/case.json",
+      "authorization_input": "cases/demo-unauthorized/authorization_input.json",
+      "review_submissions": [
+        "cases/demo-unauthorized/reviews/review-1.json"
+      ],
+      "final_authorization_sidecar": "cases/demo-unauthorized/final_authorization_sidecar.json",
+      "reference": "cases/demo-unauthorized/reference.json",
+      "adjudication": "cases/demo-unauthorized/adjudication.json",
+      "lifecycle_events": [
+        "cases/demo-unauthorized/lifecycle/event-1.json",
+        "cases/demo-unauthorized/lifecycle/event-2.json",
+        "cases/demo-unauthorized/lifecycle/event-3.json",
+        "cases/demo-unauthorized/lifecycle/event-4.json"
+      ],
+      "raw_output": "cases/demo-unauthorized/raw_output.json"
+    },
+    "demo-refused": {
+      "case": "cases/demo-refused/case.json",
+      "authorization_input": "cases/demo-refused/authorization_input.json",
+      "review_submissions": [
+        "cases/demo-refused/reviews/review-1.json"
+      ],
+      "final_authorization_sidecar": "cases/demo-refused/final_authorization_sidecar.json",
+      "reference": "cases/demo-refused/reference.json",
+      "adjudication": "cases/demo-refused/adjudication.json",
+      "lifecycle_events": [
+        "cases/demo-refused/lifecycle/event-1.json",
+        "cases/demo-refused/lifecycle/event-2.json",
+        "cases/demo-refused/lifecycle/event-3.json",
+        "cases/demo-refused/lifecycle/event-4.json"
+      ],
+      "raw_output": "cases/demo-refused/raw_output.json"
+    }
+  }
+}

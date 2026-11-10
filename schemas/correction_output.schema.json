@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Shape documentation. Strict JSON parsing, duplicate checks, declared types, address resolution, and preconditions additionally require acac.contracts. Authorization and label correctness are NOT shape constraints.",
+  "type": "object",
+  "properties": {
+    "edits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "op": {
+            "const": "replace"
+          },
+          "table": {
+            "enum": [
+              "M",
+              "H",
+              "W"
+            ]
+          },
+          "record_id": {
+            "type": "string"
+          },
+          "field": {
+            "type": "string"
+          },
+          "old_value": {
+            "type": [
+              "string",
+              "integer",
+              "boolean"
+            ]
+          },
+          "new_value": {
+            "type": [
+              "string",
+              "integer",
+              "boolean"
+            ]
+          }
+        },
+        "required": [
+          "op",
+          "table",
+          "record_id",
+          "field",
+          "old_value",
+          "new_value"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "edits"
+  ],
+  "additionalProperties": false
+}
